@@ -5,7 +5,16 @@ import { VerticalTimeline } from "@/components/ui/vertical-timeline";
 import { StateLegend } from "./state-legend";
 import { CopyToRoomsDialog } from "./copy-to-rooms-dialog";
 import { CopyToDaysDialog } from "./copy-to-days-dialog";
-import { Bed, Home } from "lucide-react";
+import { 
+  Bed, 
+  Sofa, 
+  DoorOpen, 
+  ChefHat, 
+  Flower, 
+  Settings, 
+  Bath, 
+  BookOpen 
+} from "lucide-react";
 
 interface RoomEditorProps {
   roomName: string;
@@ -26,7 +35,18 @@ export function RoomEditor({
   const [showCopyDialog, setShowCopyDialog] = useState(false);
   const [showCopyDaysDialog, setShowCopyDaysDialog] = useState(false);
   
-  const isBedroomType = roomName.toLowerCase().includes('bedroom') || roomName.toLowerCase().includes('bed');
+  const getRoomIcon = () => {
+    const name = roomName.toLowerCase();
+    if (name.includes('bedroom')) return <Bed className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('living')) return <Sofa className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('hallway')) return <DoorOpen className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('kitchen')) return <ChefHat className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('conservatory')) return <Flower className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('utility')) return <Settings className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('toilet') || name.includes('bathroom') || name.includes('shower')) return <Bath className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('study')) return <BookOpen className="w-5 h-5 text-muted-foreground" />;
+    return <Sofa className="w-5 h-5 text-muted-foreground" />; // default fallback
+  };
 
   const handleSlotClick = (index: number) => {
     const newStates = [...states];
@@ -85,11 +105,7 @@ export function RoomEditor({
               ← Back
             </button>
             <div className="flex items-center gap-3">
-              {isBedroomType ? (
-                <Bed className="w-5 h-5 text-muted-foreground" />
-              ) : (
-                <Home className="w-5 h-5 text-muted-foreground" />
-              )}
+              {getRoomIcon()}
               <div>
                 <h1 className="text-xl font-bold text-foreground">{roomName}</h1>
                 <p className="text-sm text-muted-foreground">{formatDay(selectedDay)}</p>

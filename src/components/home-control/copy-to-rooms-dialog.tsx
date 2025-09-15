@@ -2,7 +2,16 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Bed, Home } from "lucide-react";
+import { 
+  Bed, 
+  Sofa, 
+  DoorOpen, 
+  ChefHat, 
+  Flower, 
+  Settings, 
+  Bath, 
+  BookOpen 
+} from "lucide-react";
 
 interface CopyToRoomsDialogProps {
   open: boolean;
@@ -60,12 +69,17 @@ export function CopyToRoomsDialog({
     return floor === "ground" ? "Ground Floor" : "First Floor";
   };
 
-  const getRoomIcon = (type: string) => {
-    return type === "bedroom" ? (
-      <Bed className="w-4 h-4 text-muted-foreground" />
-    ) : (
-      <Home className="w-4 h-4 text-muted-foreground" />
-    );
+  const getRoomIcon = (name: string) => {
+    const roomName = name.toLowerCase();
+    if (roomName.includes('bedroom')) return <Bed className="w-4 h-4 text-muted-foreground" />;
+    if (roomName.includes('living')) return <Sofa className="w-4 h-4 text-muted-foreground" />;
+    if (roomName.includes('hallway')) return <DoorOpen className="w-4 h-4 text-muted-foreground" />;
+    if (roomName.includes('kitchen')) return <ChefHat className="w-4 h-4 text-muted-foreground" />;
+    if (roomName.includes('conservatory')) return <Flower className="w-4 h-4 text-muted-foreground" />;
+    if (roomName.includes('utility')) return <Settings className="w-4 h-4 text-muted-foreground" />;
+    if (roomName.includes('toilet') || roomName.includes('bathroom') || roomName.includes('shower')) return <Bath className="w-4 h-4 text-muted-foreground" />;
+    if (roomName.includes('study')) return <BookOpen className="w-4 h-4 text-muted-foreground" />;
+    return <Sofa className="w-4 h-4 text-muted-foreground" />; // default fallback
   };
 
   return (
@@ -95,7 +109,7 @@ export function CopyToRoomsDialog({
                         }
                       />
                       <div className="flex items-center gap-2 flex-1">
-                        {getRoomIcon(room.type)}
+                        {getRoomIcon(room.name)}
                         <label 
                           htmlFor={room.name}
                           className="text-sm font-medium cursor-pointer"
