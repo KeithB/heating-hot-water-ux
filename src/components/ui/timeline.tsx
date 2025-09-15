@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export type TimeState = "empty" | "sleeping" | "in-use" | "off" | "immersion" | "peak";
+export type TimeState = "empty" | "sleeping" | "in-use" | "off" | "on" | "peak";
 
 interface TimelineProps {
   states: TimeState[];
@@ -15,7 +15,7 @@ const stateColors: Record<TimeState, string> = {
   sleeping: "bg-state-sleeping", 
   "in-use": "bg-state-in-use",
   off: "bg-state-off",
-  immersion: "bg-state-immersion",
+  on: "bg-state-on",
   peak: "bg-state-peak",
 };
 

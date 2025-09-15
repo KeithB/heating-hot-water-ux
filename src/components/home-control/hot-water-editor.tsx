@@ -26,10 +26,10 @@ export function HotWaterEditor({
     const newStates = [...states];
     const currentState = newStates[index];
     
-    // Cycle through hot water states: off -> immersion -> peak -> off
+    // Cycle through hot water states: off -> on -> peak -> off
     if (currentState === "off" || currentState === "empty") {
-      newStates[index] = "immersion";
-    } else if (currentState === "immersion") {
+      newStates[index] = "on";
+    } else if (currentState === "on") {
       newStates[index] = "peak";
     } else if (currentState === "peak") {
       newStates[index] = "off";

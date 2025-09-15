@@ -51,7 +51,7 @@ All colors MUST be HSL.
     --state-sleeping: 215 85% 65%;
     --state-in-use: 0 75% 60%;
     --state-off: 0 0% 70%;
-    --state-immersion: 120 60% 50%;
+    --state-on: 120 60% 50%;
     --state-peak: 30 95% 65%;
 
     /* Warm accent colors for actions */

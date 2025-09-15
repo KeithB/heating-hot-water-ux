@@ -21,12 +21,12 @@ const Index = () => {
     "Kids Bedroom": Array(48).fill("empty").map((_, i) => i >= 42 || i <= 16 ? "sleeping" : "empty") as TimeState[],
   };
 
-  // Mock hot water data - off/immersion/peak schedule
+  // Mock hot water data - off/on/peak schedule
   const mockHotWaterStates: TimeState[] = Array(48).fill("off").map((_, i) => {
     // Morning peak: 6:00-8:30
     if (i >= 12 && i <= 17) return "peak";
-    // Evening immersion: 17:00-21:00
-    if (i >= 34 && i <= 42) return "immersion";
+    // Evening on: 17:00-21:00
+    if (i >= 34 && i <= 42) return "on";
     return "off";
   }) as TimeState[];
 

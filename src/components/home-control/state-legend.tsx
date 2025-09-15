@@ -14,7 +14,7 @@ const roomStates: { state: TimeState; label: string }[] = [
 
 const waterStates: { state: TimeState; label: string }[] = [
   { state: "off", label: "Off" },
-  { state: "immersion", label: "Immersion" },
+  { state: "on", label: "On" },
   { state: "peak", label: "Peak" },
 ];
 
@@ -23,7 +23,7 @@ const stateColors: Record<TimeState, string> = {
   sleeping: "bg-primary", 
   "in-use": "bg-destructive",
   off: "bg-muted",
-  immersion: "bg-success",
+  on: "bg-success",
   peak: "bg-warning",
 };
 

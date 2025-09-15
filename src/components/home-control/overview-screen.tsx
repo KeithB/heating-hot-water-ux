@@ -32,7 +32,7 @@ const mockRoomData = {
 
 const mockHotWaterStates: TimeState[] = Array(48).fill("off").map((_, i) => {
   if ((i >= 12 && i <= 16) || (i >= 36 && i <= 40)) return "peak";
-  if ((i >= 10 && i <= 12) || (i >= 16 && i <= 18) || (i >= 34 && i <= 36) || (i >= 40 && i <= 42)) return "immersion";
+  if ((i >= 10 && i <= 12) || (i >= 16 && i <= 18) || (i >= 34 && i <= 36) || (i >= 40 && i <= 42)) return "on";
   return "off";
 });
 

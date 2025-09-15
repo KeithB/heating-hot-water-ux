@@ -18,7 +18,7 @@ export function VerticalTimeline({ states, onSlotClick, className }: VerticalTim
         return "bg-primary border-primary";
       case "off":
         return "bg-muted border-border";
-      case "immersion":
+      case "on":
         return "bg-success border-success";
       case "peak":
         return "bg-warning border-warning";
