@@ -11,19 +11,19 @@ export function VerticalTimeline({ states, onSlotClick, className }: VerticalTim
   const getStateStyle = (state: TimeState) => {
     switch (state) {
       case "empty":
-        return "bg-muted border-border";
+        return "bg-state-empty border-state-empty";
       case "in-use":
-        return "bg-destructive border-destructive";
+        return "bg-state-in-use border-state-in-use";
       case "sleeping":
-        return "bg-primary border-primary";
+        return "bg-state-sleeping border-state-sleeping";
       case "off":
-        return "bg-muted border-border";
+        return "bg-state-off border-state-off";
       case "on":
-        return "bg-success border-success";
+        return "bg-state-on border-state-on";
       case "peak":
-        return "bg-warning border-warning";
+        return "bg-state-peak border-state-peak";
       default:
-        return "bg-muted border-border";
+        return "bg-state-empty border-state-empty";
     }
   };
 

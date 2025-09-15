@@ -59,7 +59,7 @@ export default {
           sleeping: "hsl(var(--state-sleeping))",
           "in-use": "hsl(var(--state-in-use))",
           off: "hsl(var(--state-off))",
-          immersion: "hsl(var(--state-immersion))",
+          on: "hsl(var(--state-on))",
           peak: "hsl(var(--state-peak))",
         },
         /* Boost button colors */

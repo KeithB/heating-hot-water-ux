@@ -19,12 +19,12 @@ const waterStates: { state: TimeState; label: string }[] = [
 ];
 
 const stateColors: Record<TimeState, string> = {
-  empty: "bg-muted",
-  sleeping: "bg-primary", 
-  "in-use": "bg-destructive",
-  off: "bg-muted",
-  on: "bg-success",
-  peak: "bg-warning",
+  empty: "bg-state-empty",
+  sleeping: "bg-state-sleeping", 
+  "in-use": "bg-state-in-use",
+  off: "bg-state-off",
+  on: "bg-state-on",
+  peak: "bg-state-peak",
 };
 
 export function StateLegend({ type, className }: StateLegendProps) {
