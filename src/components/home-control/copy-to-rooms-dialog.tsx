@@ -14,13 +14,19 @@ interface CopyToRoomsDialogProps {
 const roomsByFloor = {
   ground: [
     { name: "Living Room", type: "living" },
-    { name: "Kitchen", type: "kitchen" },
-    { name: "Study", type: "study" },
+    { name: "Hallway", type: "hallway" },
+    { name: "Kitchen Diner", type: "kitchen" },
+    { name: "Conservatory", type: "conservatory" },
+    { name: "Utility Room", type: "utility" },
+    { name: "Toilet", type: "toilet" },
   ],
   first: [
     { name: "Master Bedroom", type: "bedroom" },
-    { name: "Guest Bedroom", type: "bedroom" },
-    { name: "Kids Bedroom", type: "bedroom" },
+    { name: "Rhys' Bedroom", type: "bedroom" },
+    { name: "Zoes Bedroom", type: "bedroom" },
+    { name: "Study", type: "study" },
+    { name: "Bathroom", type: "bathroom" },
+    { name: "Shower room", type: "bathroom" },
   ]
 };
 

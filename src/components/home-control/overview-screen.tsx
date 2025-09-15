@@ -19,13 +19,19 @@ interface OverviewScreenProps {
 const mockRoomData = {
   ground: [
     { name: "Living Room", states: Array(48).fill("empty").map((_, i) => i >= 16 && i <= 44 ? "in-use" : "empty") as TimeState[] },
-    { name: "Kitchen", states: Array(48).fill("empty").map((_, i) => (i >= 14 && i <= 18) || (i >= 36 && i <= 42) ? "in-use" : "empty") as TimeState[] },
-    { name: "Study", states: Array(48).fill("empty").map((_, i) => i >= 18 && i <= 36 ? "in-use" : "empty") as TimeState[] },
+    { name: "Hallway", states: Array(48).fill("empty") as TimeState[] },
+    { name: "Kitchen Diner", states: Array(48).fill("empty").map((_, i) => (i >= 14 && i <= 18) || (i >= 36 && i <= 42) ? "in-use" : "empty") as TimeState[] },
+    { name: "Conservatory", states: Array(48).fill("empty") as TimeState[] },
+    { name: "Utility Room", states: Array(48).fill("empty") as TimeState[] },
+    { name: "Toilet", states: Array(48).fill("empty") as TimeState[] },
   ],
   first: [
     { name: "Master Bedroom", states: Array(48).fill("empty").map((_, i) => i >= 44 || i <= 14 ? "sleeping" : "empty") as TimeState[] },
-    { name: "Guest Bedroom", states: Array(48).fill("empty") as TimeState[] },
-    { name: "Kids Bedroom", states: Array(48).fill("empty").map((_, i) => i >= 42 || i <= 16 ? "sleeping" : "empty") as TimeState[] },
+    { name: "Rhys' Bedroom", states: Array(48).fill("empty").map((_, i) => i >= 42 || i <= 16 ? "sleeping" : "empty") as TimeState[] },
+    { name: "Zoes Bedroom", states: Array(48).fill("empty").map((_, i) => i >= 42 || i <= 16 ? "sleeping" : "empty") as TimeState[] },
+    { name: "Study", states: Array(48).fill("empty").map((_, i) => i >= 18 && i <= 36 ? "in-use" : "empty") as TimeState[] },
+    { name: "Bathroom", states: Array(48).fill("empty") as TimeState[] },
+    { name: "Shower room", states: Array(48).fill("empty") as TimeState[] },
   ]
 };
 

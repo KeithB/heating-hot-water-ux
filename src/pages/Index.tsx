@@ -14,11 +14,17 @@ const Index = () => {
   // Mock room data - in real app this would come from Home Assistant
   const mockRoomStates: Record<string, TimeState[]> = {
     "Living Room": Array(48).fill("empty").map((_, i) => i >= 16 && i <= 44 ? "in-use" : "empty") as TimeState[],
-    "Kitchen": Array(48).fill("empty").map((_, i) => (i >= 14 && i <= 18) || (i >= 36 && i <= 42) ? "in-use" : "empty") as TimeState[],
-    "Study": Array(48).fill("empty").map((_, i) => i >= 18 && i <= 36 ? "in-use" : "empty") as TimeState[],
+    "Hallway": Array(48).fill("empty") as TimeState[],
+    "Kitchen Diner": Array(48).fill("empty").map((_, i) => (i >= 14 && i <= 18) || (i >= 36 && i <= 42) ? "in-use" : "empty") as TimeState[],
+    "Conservatory": Array(48).fill("empty") as TimeState[],
+    "Utility Room": Array(48).fill("empty") as TimeState[],
+    "Toilet": Array(48).fill("empty") as TimeState[],
     "Master Bedroom": Array(48).fill("empty").map((_, i) => i >= 44 || i <= 14 ? "sleeping" : "empty") as TimeState[],
-    "Guest Bedroom": Array(48).fill("empty") as TimeState[],
-    "Kids Bedroom": Array(48).fill("empty").map((_, i) => i >= 42 || i <= 16 ? "sleeping" : "empty") as TimeState[],
+    "Rhys' Bedroom": Array(48).fill("empty").map((_, i) => i >= 42 || i <= 16 ? "sleeping" : "empty") as TimeState[],
+    "Zoes Bedroom": Array(48).fill("empty").map((_, i) => i >= 42 || i <= 16 ? "sleeping" : "empty") as TimeState[],
+    "Study": Array(48).fill("empty").map((_, i) => i >= 18 && i <= 36 ? "in-use" : "empty") as TimeState[],
+    "Bathroom": Array(48).fill("empty") as TimeState[],
+    "Shower room": Array(48).fill("empty") as TimeState[],
   };
 
   // Mock hot water data - off/on/peak schedule
