@@ -5,7 +5,6 @@ import { DaySelector } from "./day-selector";
 import { FloorTabs } from "./floor-tabs";
 import { RoomTimeline } from "./room-timeline";
 import { HotWaterTimeline } from "./hot-water-timeline";
-import { StateLegend } from "./state-legend";
 import { TimeState } from "@/components/ui/timeline";
 
 interface OverviewScreenProps {
@@ -96,13 +95,6 @@ export function OverviewScreen({ onRoomEdit, onHotWaterEdit, onStatusClick, sele
           states={mockHotWaterStates}
           onClick={onHotWaterEdit}
         />
-
-
-        {/* Legends */}
-        <div className="space-y-3">
-          <StateLegend type="room" />
-          <StateLegend type="water" />
-        </div>
       </div>
     </div>
   );
