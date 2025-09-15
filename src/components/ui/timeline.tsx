@@ -28,6 +28,35 @@ export function Timeline({
 }: TimelineProps) {
   const isVertical = orientation === "vertical";
   
+  // Find state change points
+  const getStateChanges = () => {
+    const changes: number[] = [];
+    for (let i = 1; i < states.length; i++) {
+      if (states[i] !== states[i - 1]) {
+        changes.push(i);
+      }
+    }
+    
+    // Filter out changes that are too close together (within 2 segments)
+    const filteredChanges: number[] = [];
+    for (let i = 0; i < changes.length; i++) {
+      const current = changes[i];
+      const next = changes[i + 1];
+      
+      if (!next || next - current > 2) {
+        filteredChanges.push(current);
+      } else {
+        // Skip the close change and add the later one
+        i++;
+        if (next) filteredChanges.push(next);
+      }
+    }
+    
+    return filteredChanges;
+  };
+  
+  const stateChanges = getStateChanges();
+  
   return (
     <div className={cn(
       "relative",
@@ -50,6 +79,32 @@ export function Timeline({
             onClick={() => onStateChange?.(index, state)}
             title={`${hour.toString().padStart(2, '0')}:${isHalfHour ? '30' : '00'}`}
           />
+        );
+      })}
+      
+      {/* State change time labels */}
+      {stateChanges.map((changeIndex) => {
+        const hour = Math.floor(changeIndex / 2);
+        const isHalfHour = changeIndex % 2 === 1;
+        const timeLabel = `${hour.toString().padStart(2, '0')}:${isHalfHour ? '30' : '00'}`;
+        
+        return (
+          <div
+            key={`change-${changeIndex}`}
+            className={cn(
+              "absolute text-xs font-medium text-muted-foreground pointer-events-none",
+              isVertical 
+                ? "left-10 transform -translate-y-1/2" 
+                : "top-10 transform -translate-x-1/2"
+            )}
+            style={
+              isVertical 
+                ? { top: `${(changeIndex / states.length) * 100}%` }
+                : { left: `${(changeIndex / states.length) * 100}%` }
+            }
+          >
+            {timeLabel}
+          </div>
         );
       })}
       
