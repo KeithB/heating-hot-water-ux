@@ -66,7 +66,9 @@ export function RoomEditor({
   };
 
   const formatDay = (day: string) => {
-    if (day === "today") return "Today";
+    if (day === "today") {
+      return new Date().toLocaleDateString('en-US', { weekday: 'long' });
+    }
     return day.charAt(0).toUpperCase() + day.slice(1);
   };
 
