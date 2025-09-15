@@ -28,11 +28,11 @@ export function RoomEditor({
 
   const handleSlotClick = (index: number) => {
     const newStates = [...states];
-    // Cycle through states: empty -> in-use -> sleeping -> empty (or skip sleeping for non-bedrooms)
+    // Cycle through states: empty -> in-use -> sleeping -> empty
     if (newStates[index] === "empty") {
       newStates[index] = "in-use";
     } else if (newStates[index] === "in-use") {
-      newStates[index] = isBedroomType ? "sleeping" : "empty";
+      newStates[index] = "sleeping";
     } else {
       newStates[index] = "empty";
     }
