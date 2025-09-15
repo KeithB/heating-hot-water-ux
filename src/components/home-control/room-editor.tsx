@@ -95,6 +95,9 @@ export function RoomEditor({
             </div>
           </div>
 
+          {/* Legend */}
+          <StateLegend type="room" />
+
           {/* Timeline */}
           <div className="bg-card rounded-xl p-4 shadow-card">
             <VerticalTimeline
@@ -103,9 +106,6 @@ export function RoomEditor({
               className="mb-4"
             />
           </div>
-
-          {/* Legend */}
-          <StateLegend type="room" />
 
           {/* Action Buttons */}
           <div className="space-y-3">
