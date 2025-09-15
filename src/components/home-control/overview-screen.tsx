@@ -12,6 +12,8 @@ interface OverviewScreenProps {
   onRoomEdit: (roomName: string) => void;
   onHotWaterEdit: () => void;
   onStatusClick: () => void;
+  selectedDay: string;
+  onDayChange: (day: string) => void;
 }
 
 // Mock data - in real app this would come from Home Assistant
@@ -34,8 +36,7 @@ const mockHotWaterStates: TimeState[] = Array(48).fill("off").map((_, i) => {
   return "off";
 });
 
-export function OverviewScreen({ onRoomEdit, onHotWaterEdit, onStatusClick }: OverviewScreenProps) {
-  const [selectedDay, setSelectedDay] = useState("today");
+export function OverviewScreen({ onRoomEdit, onHotWaterEdit, onStatusClick, selectedDay, onDayChange }: OverviewScreenProps) {
   const [selectedFloor, setSelectedFloor] = useState("ground");
   const [systemStatus] = useState<"good" | "warning" | "error">("good");
 
@@ -63,7 +64,7 @@ export function OverviewScreen({ onRoomEdit, onHotWaterEdit, onStatusClick }: Ov
         {/* Day Selector */}
         <DaySelector 
           selectedDay={selectedDay} 
-          onDayChange={setSelectedDay}
+          onDayChange={onDayChange}
         />
 
         {/* Floor Tabs */}

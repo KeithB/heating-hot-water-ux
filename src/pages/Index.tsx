@@ -1,11 +1,24 @@
 import { useState } from "react";
 import { OverviewScreen } from "@/components/home-control/overview-screen";
+import { RoomEditor } from "@/components/home-control/room-editor";
+import { TimeState } from "@/components/ui/timeline";
 
 type Screen = "overview" | "room-edit" | "water-edit";
 
 const Index = () => {
   const [currentScreen, setCurrentScreen] = useState<Screen>("overview");
   const [selectedRoom, setSelectedRoom] = useState<string>("");
+  const [selectedDay, setSelectedDay] = useState("today");
+
+  // Mock room data - in real app this would come from Home Assistant
+  const mockRoomStates: Record<string, TimeState[]> = {
+    "Living Room": Array(48).fill("empty").map((_, i) => i >= 16 && i <= 44 ? "in-use" : "empty") as TimeState[],
+    "Kitchen": Array(48).fill("empty").map((_, i) => (i >= 14 && i <= 18) || (i >= 36 && i <= 42) ? "in-use" : "empty") as TimeState[],
+    "Study": Array(48).fill("empty").map((_, i) => i >= 18 && i <= 36 ? "in-use" : "empty") as TimeState[],
+    "Master Bedroom": Array(48).fill("empty").map((_, i) => i >= 44 || i <= 14 ? "sleeping" : "empty") as TimeState[],
+    "Guest Bedroom": Array(48).fill("empty") as TimeState[],
+    "Kids Bedroom": Array(48).fill("empty").map((_, i) => i >= 42 || i <= 16 ? "sleeping" : "empty") as TimeState[],
+  };
 
   const handleRoomEdit = (roomName: string) => {
     setSelectedRoom(roomName);
@@ -25,6 +38,12 @@ const Index = () => {
     setCurrentScreen("overview");
   };
 
+  const handleRoomSave = (states: TimeState[]) => {
+    // In real app, this would save to Home Assistant
+    console.log("Saving room states:", selectedRoom, states);
+    setCurrentScreen("overview");
+  };
+
   return (
     <div className="min-h-screen">
       {currentScreen === "overview" && (
@@ -32,26 +51,19 @@ const Index = () => {
           onRoomEdit={handleRoomEdit}
           onHotWaterEdit={handleHotWaterEdit}
           onStatusClick={handleStatusClick}
+          selectedDay={selectedDay}
+          onDayChange={setSelectedDay}
         />
       )}
       
       {currentScreen === "room-edit" && (
-        <div className="min-h-screen bg-gradient-subtle p-4">
-          <div className="max-w-md mx-auto">
-            <div className="flex items-center gap-4 mb-6">
-              <button 
-                onClick={handleBackToOverview}
-                className="text-primary hover:text-primary/80 font-medium"
-              >
-                ← Back
-              </button>
-              <h1 className="text-xl font-bold text-foreground">{selectedRoom} Editor</h1>
-            </div>
-            <div className="bg-card rounded-xl p-6 shadow-card text-center">
-              <p className="text-muted-foreground">Room editor coming soon...</p>
-            </div>
-          </div>
-        </div>
+        <RoomEditor
+          roomName={selectedRoom}
+          selectedDay={selectedDay}
+          initialStates={mockRoomStates[selectedRoom] || Array(48).fill("empty")}
+          onSave={handleRoomSave}
+          onCancel={handleBackToOverview}
+        />
       )}
 
       {currentScreen === "water-edit" && (
