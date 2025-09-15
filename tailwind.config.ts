@@ -47,6 +47,26 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        /* System status colors */
+        status: {
+          good: "hsl(var(--status-good))",
+          warning: "hsl(var(--status-warning))",
+          error: "hsl(var(--status-error))",
+        },
+        /* Room and water state colors */
+        state: {
+          empty: "hsl(var(--state-empty))",
+          sleeping: "hsl(var(--state-sleeping))",
+          "in-use": "hsl(var(--state-in-use))",
+          off: "hsl(var(--state-off))",
+          immersion: "hsl(var(--state-immersion))",
+          peak: "hsl(var(--state-peak))",
+        },
+        /* Boost button colors */
+        boost: {
+          heat: "hsl(var(--boost-heat))",
+          water: "hsl(var(--boost-water))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -62,6 +82,17 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      backgroundImage: {
+        "gradient-warm": "var(--gradient-warm)",
+        "gradient-subtle": "var(--gradient-subtle)",
+      },
+      boxShadow: {
+        card: "var(--shadow-card)",
+        elevated: "var(--shadow-elevated)",
+      },
+      transitionTimingFunction: {
+        smooth: "var(--transition-smooth)",
       },
       keyframes: {
         "accordion-down": {
