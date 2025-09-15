@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { OverviewScreen } from "@/components/home-control/overview-screen";
 import { RoomEditor } from "@/components/home-control/room-editor";
+import { HotWaterEditor } from "@/components/home-control/hot-water-editor";
 import { TimeState } from "@/components/ui/timeline";
 
 type Screen = "overview" | "room-edit" | "water-edit";
@@ -19,6 +20,15 @@ const Index = () => {
     "Guest Bedroom": Array(48).fill("empty") as TimeState[],
     "Kids Bedroom": Array(48).fill("empty").map((_, i) => i >= 42 || i <= 16 ? "sleeping" : "empty") as TimeState[],
   };
+
+  // Mock hot water data - off/immersion/peak schedule
+  const mockHotWaterStates: TimeState[] = Array(48).fill("off").map((_, i) => {
+    // Morning peak: 6:00-8:30
+    if (i >= 12 && i <= 17) return "peak";
+    // Evening immersion: 17:00-21:00
+    if (i >= 34 && i <= 42) return "immersion";
+    return "off";
+  }) as TimeState[];
 
   const handleRoomEdit = (roomName: string) => {
     setSelectedRoom(roomName);
@@ -44,6 +54,19 @@ const Index = () => {
     setCurrentScreen("overview");
   };
 
+  const handleHotWaterSave = (states: TimeState[]) => {
+    // In real app, this would save to Home Assistant
+    console.log("Saving hot water states:", states);
+    setCurrentScreen("overview");
+  };
+
+  const handleHotWaterCopyToOtherDays = (states: TimeState[]) => {
+    // In real app, this would copy to other days
+    console.log("Copying hot water states to other days:", states);
+    // For now, just show a message - could open a day selector dialog
+    alert("Copy to other days functionality would be implemented here");
+  };
+
   return (
     <div className="min-h-screen">
       {currentScreen === "overview" && (
@@ -67,22 +90,13 @@ const Index = () => {
       )}
 
       {currentScreen === "water-edit" && (
-        <div className="min-h-screen bg-gradient-subtle p-4">
-          <div className="max-w-md mx-auto">
-            <div className="flex items-center gap-4 mb-6">
-              <button 
-                onClick={handleBackToOverview}
-                className="text-primary hover:text-primary/80 font-medium"
-              >
-                ← Back
-              </button>
-              <h1 className="text-xl font-bold text-foreground">Hot Water Editor</h1>
-            </div>
-            <div className="bg-card rounded-xl p-6 shadow-card text-center">
-              <p className="text-muted-foreground">Hot water editor coming soon...</p>
-            </div>
-          </div>
-        </div>
+        <HotWaterEditor
+          selectedDay={selectedDay}
+          initialStates={mockHotWaterStates}
+          onSave={handleHotWaterSave}
+          onCancel={handleBackToOverview}
+          onCopyToOtherDays={handleHotWaterCopyToOtherDays}
+        />
       )}
     </div>
   );
