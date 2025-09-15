@@ -4,6 +4,7 @@ import { TimeState } from "@/components/ui/timeline";
 import { VerticalTimeline } from "@/components/ui/vertical-timeline";
 import { StateLegend } from "./state-legend";
 import { CopyToRoomsDialog } from "./copy-to-rooms-dialog";
+import { CopyToDaysDialog } from "./copy-to-days-dialog";
 import { Bed, Home } from "lucide-react";
 
 interface RoomEditorProps {
@@ -23,6 +24,7 @@ export function RoomEditor({
 }: RoomEditorProps) {
   const [states, setStates] = useState<TimeState[]>(initialStates);
   const [showCopyDialog, setShowCopyDialog] = useState(false);
+  const [showCopyDaysDialog, setShowCopyDaysDialog] = useState(false);
   
   const isBedroomType = roomName.toLowerCase().includes('bedroom') || roomName.toLowerCase().includes('bed');
 
@@ -40,8 +42,7 @@ export function RoomEditor({
   };
 
   const handleCopyToOtherDays = () => {
-    // In real app, this would open a day selector dialog
-    console.log("Copy to other days:", states);
+    setShowCopyDaysDialog(true);
   };
 
   const handleCopyToOtherRooms = () => {
@@ -52,6 +53,12 @@ export function RoomEditor({
     // In real app, this would update the selected rooms with current states
     console.log("Copying schedule to rooms:", selectedRooms, states);
     setShowCopyDialog(false);
+  };
+
+  const handleCopyDaysApply = (selectedDays: string[]) => {
+    // In real app, this would update the selected days with current states
+    console.log("Copying schedule to days:", selectedDays, states);
+    setShowCopyDaysDialog(false);
   };
 
   const handleSave = () => {
@@ -143,6 +150,13 @@ export function RoomEditor({
         onOpenChange={setShowCopyDialog}
         onApply={handleCopyApply}
         currentRoom={roomName}
+      />
+
+      <CopyToDaysDialog
+        open={showCopyDaysDialog}
+        onOpenChange={setShowCopyDaysDialog}
+        onApply={handleCopyDaysApply}
+        currentDay={selectedDay}
       />
     </>
   );
