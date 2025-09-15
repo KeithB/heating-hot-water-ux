@@ -12,12 +12,12 @@ export function BoostButton({ type, onClick, className }: BoostButtonProps) {
   const config = {
     heat: {
       icon: Flame,
-      label: "Boost Heat",
+      label: "Boost House Heat (1h)",
       color: "bg-boost-heat hover:bg-boost-heat/90",
     },
     water: {
       icon: Droplets,
-      label: "Boost Water",
+      label: "Boost Hot Water (1h → Peak)",
       color: "bg-boost-water hover:bg-boost-water/90",
     }
   };

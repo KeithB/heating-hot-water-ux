@@ -7,6 +7,7 @@ interface DaySelectorProps {
 }
 
 const days = [
+  { key: "today", label: "Today" },
   { key: "mon", label: "Mon" },
   { key: "tue", label: "Tue" },
   { key: "wed", label: "Wed" },

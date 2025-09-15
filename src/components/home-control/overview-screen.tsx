@@ -61,12 +61,6 @@ export function OverviewScreen({ onRoomEdit, onHotWaterEdit, onStatusClick, sele
           <StatusIndicator status={systemStatus} onClick={onStatusClick} />
         </div>
 
-        {/* Boost Buttons */}
-        <div className="grid grid-cols-2 gap-3">
-          <BoostButton type="heat" onClick={handleBoostHeat} />
-          <BoostButton type="water" onClick={handleBoostWater} />
-        </div>
-
         {/* Day Selector */}
         <DaySelector 
           selectedDay={selectedDay} 
@@ -77,7 +71,6 @@ export function OverviewScreen({ onRoomEdit, onHotWaterEdit, onStatusClick, sele
         <FloorTabs 
           selectedFloor={selectedFloor} 
           onFloorChange={setSelectedFloor}
-          roomData={mockRoomData}
         />
 
         {/* Room Timelines */}
@@ -97,6 +90,12 @@ export function OverviewScreen({ onRoomEdit, onHotWaterEdit, onStatusClick, sele
           states={mockHotWaterStates}
           onClick={onHotWaterEdit}
         />
+
+        {/* Boost Buttons */}
+        <div className="grid grid-cols-1 gap-3">
+          <BoostButton type="heat" onClick={handleBoostHeat} />
+          <BoostButton type="water" onClick={handleBoostWater} />
+        </div>
 
         {/* Legends */}
         <div className="space-y-3">
