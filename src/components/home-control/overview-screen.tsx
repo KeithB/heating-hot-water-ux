@@ -72,6 +72,12 @@ export function OverviewScreen({ onRoomEdit, onHotWaterEdit, onStatusClick, sele
           onDayChange={onDayChange}
         />
 
+        {/* Hot Water Timeline */}
+        <HotWaterTimeline
+          states={mockHotWaterStates}
+          onClick={onHotWaterEdit}
+        />
+
         {/* Floor Tabs */}
         <FloorTabs 
           selectedFloor={selectedFloor} 
@@ -89,12 +95,6 @@ export function OverviewScreen({ onRoomEdit, onHotWaterEdit, onStatusClick, sele
             />
           ))}
         </div>
-
-        {/* Hot Water Timeline */}
-        <HotWaterTimeline
-          states={mockHotWaterStates}
-          onClick={onHotWaterEdit}
-        />
       </div>
     </div>
   );
