@@ -1,6 +1,15 @@
 import { Timeline, TimeState } from "@/components/ui/timeline";
 import { cn } from "@/lib/utils";
-import { Bed, Home } from "lucide-react";
+import { 
+  Bed, 
+  Sofa, 
+  DoorOpen, 
+  ChefHat, 
+  Flower, 
+  Settings, 
+  Bath, 
+  BookOpen 
+} from "lucide-react";
 
 interface RoomTimelineProps {
   roomName: string;
@@ -10,7 +19,18 @@ interface RoomTimelineProps {
 }
 
 export function RoomTimeline({ roomName, states, onClick, className }: RoomTimelineProps) {
-  const isBedroomType = roomName.toLowerCase().includes('bedroom') || roomName.toLowerCase().includes('bed');
+  const getRoomIcon = () => {
+    const name = roomName.toLowerCase();
+    if (name.includes('bedroom')) return <Bed className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('living')) return <Sofa className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('hallway')) return <DoorOpen className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('kitchen')) return <ChefHat className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('conservatory')) return <Flower className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('utility')) return <Settings className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('toilet') || name.includes('bathroom') || name.includes('shower')) return <Bath className="w-5 h-5 text-muted-foreground" />;
+    if (name.includes('study')) return <BookOpen className="w-5 h-5 text-muted-foreground" />;
+    return <Sofa className="w-5 h-5 text-muted-foreground" />; // default fallback
+  };
   
   return (
     <div 
@@ -21,11 +41,7 @@ export function RoomTimeline({ roomName, states, onClick, className }: RoomTimel
       onClick={onClick}
     >
       <div className="flex items-center gap-3 mb-3">
-        {isBedroomType ? (
-          <Bed className="w-5 h-5 text-muted-foreground" />
-        ) : (
-          <Home className="w-5 h-5 text-muted-foreground" />
-        )}
+        {getRoomIcon()}
         <h3 className="font-medium text-card-foreground">{roomName}</h3>
       </div>
       
