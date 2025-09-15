@@ -81,6 +81,9 @@ export function HotWaterEditor({
             </div>
           </div>
 
+          {/* Legend */}
+          <StateLegend type="water" />
+
           {/* Timeline */}
           <div className="bg-card rounded-xl p-4 shadow-card">
             <VerticalTimeline
@@ -89,9 +92,6 @@ export function HotWaterEditor({
               className="mb-4"
             />
           </div>
-
-          {/* Legend */}
-          <StateLegend type="water" />
 
           {/* Action Buttons */}
           <div className="space-y-3">
