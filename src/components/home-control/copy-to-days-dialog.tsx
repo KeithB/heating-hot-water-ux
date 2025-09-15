@@ -63,28 +63,34 @@ export function CopyToDaysDialog({
         
         <div className="space-y-4">
           <div className="space-y-3">
-            {daysOfWeek
-              .filter(day => day.key !== currentDayNormalized)
-              .map((day) => (
+            {daysOfWeek.map((day) => {
+              const isCurrentDay = day.key === currentDayNormalized;
+              return (
                 <div key={day.key} className="flex items-center space-x-3">
                   <Checkbox
                     id={day.key}
                     checked={selectedDays.includes(day.key)}
+                    disabled={isCurrentDay}
                     onCheckedChange={(checked) => 
-                      handleDayToggle(day.key, checked as boolean)
+                      !isCurrentDay && handleDayToggle(day.key, checked as boolean)
                     }
                   />
                   <div className="flex items-center gap-2 flex-1">
-                    <Calendar className="w-4 h-4 text-muted-foreground" />
+                    <Calendar className={`w-4 h-4 ${isCurrentDay ? 'text-muted-foreground/50' : 'text-muted-foreground'}`} />
                     <label 
                       htmlFor={day.key}
-                      className="text-sm font-medium cursor-pointer"
+                      className={`text-sm font-medium ${
+                        isCurrentDay 
+                          ? 'text-muted-foreground/50 cursor-not-allowed' 
+                          : 'cursor-pointer'
+                      }`}
                     >
-                      {day.label}
+                      {day.label} {isCurrentDay && '(Current)'}
                     </label>
                   </div>
                 </div>
-              ))}
+              );
+            })}
           </div>
         </div>
 
