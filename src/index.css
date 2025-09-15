@@ -8,36 +8,36 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Soft neutral backgrounds */
-    --background: 28 20% 97%;
-    --foreground: 25 15% 25%;
+    /* Soft neutral backgrounds - less bright */
+    --background: 28 12% 94%;
+    --foreground: 25 15% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 25 15% 25%;
+    --card: 28 8% 98%;
+    --card-foreground: 25 15% 22%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 25 15% 25%;
+    --popover: 28 8% 98%;
+    --popover-foreground: 25 15% 22%;
 
-    /* Warm primary colors */
-    --primary: 20 85% 55%;
+    /* Warm primary colors - slightly muted */
+    --primary: 20 75% 52%;
     --primary-foreground: 0 0% 100%;
 
     /* Soft secondary */
-    --secondary: 28 25% 92%;
+    --secondary: 28 18% 88%;
     --secondary-foreground: 25 15% 25%;
 
-    --muted: 28 15% 88%;
-    --muted-foreground: 25 8% 45%;
+    --muted: 28 12% 85%;
+    --muted-foreground: 25 8% 48%;
 
-    --accent: 25 45% 88%;
+    --accent: 25 35% 85%;
     --accent-foreground: 25 15% 25%;
 
-    --destructive: 0 75% 60%;
+    --destructive: 0 65% 58%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 28 20% 85%;
-    --input: 28 20% 90%;
-    --ring: 20 85% 55%;
+    --border: 28 15% 82%;
+    --input: 28 15% 87%;
+    --ring: 20 75% 52%;
 
     --radius: 0.75rem;
 
@@ -58,13 +58,13 @@ All colors MUST be HSL.
     --boost-heat: 20 85% 55%;
     --boost-water: 30 95% 65%;
 
-    /* Gradients for warmth */
-    --gradient-warm: linear-gradient(135deg, hsl(25 85% 60%), hsl(15 80% 55%));
-    --gradient-subtle: linear-gradient(180deg, hsl(28 20% 98%), hsl(28 15% 95%));
+    /* Gradients for warmth - softer */
+    --gradient-warm: linear-gradient(135deg, hsl(25 75% 58%), hsl(15 70% 53%));
+    --gradient-subtle: linear-gradient(180deg, hsl(28 12% 96%), hsl(28 10% 92%));
 
-    /* Shadows for cards */
-    --shadow-card: 0 4px 20px -4px hsl(25 15% 25% / 0.1);
-    --shadow-elevated: 0 8px 30px -6px hsl(25 15% 25% / 0.15);
+    /* Shadows for cards - softer */
+    --shadow-card: 0 2px 12px -2px hsl(25 15% 25% / 0.08);
+    --shadow-elevated: 0 4px 20px -4px hsl(25 15% 25% / 0.12);
 
     /* Animation */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
