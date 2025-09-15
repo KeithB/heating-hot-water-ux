@@ -35,7 +35,7 @@ export function RoomTimeline({ roomName, states, onClick, className }: RoomTimel
   return (
     <div 
       className={cn(
-        "bg-card rounded-xl p-4 shadow-card cursor-pointer transition-smooth hover:shadow-elevated active:scale-[0.98]",
+        "bg-card rounded-xl p-4 pb-6 shadow-card cursor-pointer transition-smooth hover:shadow-elevated active:scale-[0.98]",
         className
       )}
       onClick={onClick}
