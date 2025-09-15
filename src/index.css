@@ -48,11 +48,11 @@ All colors MUST be HSL.
 
     /* Room/Water state colors - high contrast */
     --state-empty: 0 0% 70%;
-    --state-sleeping: 215 85% 65%;
-    --state-in-use: 0 75% 60%;
+    --state-sleeping: 210 80% 60%;
+    --state-in-use: 25 75% 55%;
     --state-off: 0 0% 70%;
-    --state-on: 120 60% 50%;
-    --state-peak: 30 95% 65%;
+    --state-on: 25 75% 55%;
+    --state-peak: 15 70% 50%;
 
     /* Warm accent colors for actions */
     --boost-heat: 20 85% 55%;
